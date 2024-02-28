@@ -82,6 +82,7 @@ obstacles_list.add(obstacle)
 
 BLACK = (0,0,0)
 running = True
+font_obj = pygame.font.SysFont("consolas",size=18,bold=True)
 while running:
     window.fill(BLACK)
     for event in pygame.event.get():
@@ -94,6 +95,11 @@ while running:
     #Calls the update() method of all sprites in the group.
     all_sprites_list.draw(window)
     obstacles_list.draw(window)
+    # Render text
+    text = font_obj.render(f"Position:({player.rect.centerx},{player.rect.centery})",True,'white','blue')
+    text_position = pygame.rect.Rect(10,10,0,0)
+    window.blit(text,text_position)
+
     pygame.display.update()
     clock.tick(60)
     # It will compute how many milliseconds have passed since the previous call
